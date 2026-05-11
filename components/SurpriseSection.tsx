@@ -168,7 +168,7 @@ export default function SurpriseSection() {
             whileTap={!opened ? { scale: 0.95 } : {}}
           >
             <motion.div
-              className="text-[120px] md:text-[160px] filter drop-shadow-lg"
+              className="text-8xl md:text-[160px] filter drop-shadow-lg"
               animate={
                 !opened
                   ? {
@@ -204,7 +204,7 @@ export default function SurpriseSection() {
               initial={{ opacity: 0, y: 60, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, type: 'spring', damping: 15 }}
-              className="glass neon-border-pink rounded-3xl p-8 md:p-12 text-left relative overflow-hidden"
+              className="glass neon-border-pink rounded-3xl p-6 md:p-12 text-left relative overflow-hidden"
             >
               {/* Sparkle corner */}
               <div className="absolute top-4 right-4 text-2xl animate-spin-slow">✨</div>

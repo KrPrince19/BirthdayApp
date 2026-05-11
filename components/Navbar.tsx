@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { GiPartyPopper } from 'react-icons/gi';
@@ -27,14 +27,14 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 md:py-4 flex items-center justify-between">
         {/* Logo */}
         <motion.a
           href="#hero"
-          className="flex items-center gap-2 text-xl font-bold"
+          className="flex items-center gap-2 text-lg md:text-xl font-bold z-50"
           whileHover={{ scale: 1.05 }}
         >
-          <GiPartyPopper className="text-2xl text-pink-400" />
+          <GiPartyPopper className="text-xl md:text-2xl text-pink-400" />
           <span className="gradient-text font-display">Celebrate</span>
         </motion.a>
 
@@ -53,10 +53,10 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* Desktop CTA - Strictly hidden on mobile/tablet */}
         <motion.a
           href="#surprise"
-          className="hidden md:flex btn-primary text-sm py-2.5 px-6"
+          className="!hidden md:!inline-flex btn-primary text-sm py-2.5 px-6 whitespace-nowrap"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
         >
@@ -65,7 +65,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-white/80 text-2xl"
+          className="md:hidden text-white/80 text-2xl z-50 p-2"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FiX /> : <FiMenu />}
@@ -73,31 +73,29 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <motion.div
-        initial={false}
-        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-        className="md:hidden overflow-hidden"
-      >
-        <div className="px-6 pb-6 flex flex-col gap-4 bg-black/60 backdrop-blur-xl">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-white/70 hover:text-white py-2 border-b border-white/5 text-sm font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#surprise"
-            className="btn-primary text-sm text-center"
-            onClick={() => setIsOpen(false)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-2xl border-t border-white/5"
           >
-            <span>🎁 Open Surprise</span>
-          </a>
-        </div>
-      </motion.div>
+            <div className="px-6 py-8 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-white/70 hover:text-white text-lg font-medium border-b border-white/5 pb-4"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
