@@ -55,6 +55,20 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Special Wishes */}
+          <div>
+            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-widest">
+              A Special Message
+            </h4>
+            <div className="glass p-4 rounded-xl border border-white/10 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <p className="text-white/80 text-sm leading-relaxed italic relative z-10">
+                "Wishes from your Yadav friend! ✨<br />
+                <span className="text-white/50 text-xs mt-2 block not-italic">May this year bring you endless joy and success.</span>
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Divider */}

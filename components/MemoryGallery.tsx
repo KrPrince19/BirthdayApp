@@ -49,6 +49,24 @@ const photos = [
     alt: 'Forever Grateful',
     caption: 'Forever Grateful ❤️',
   },
+  {
+    id: 9,
+    src: "/images/zam7.jpeg",
+    alt: 'Beautiful Moment',
+    caption: 'Beautiful Moment 💖',
+  },
+  {
+    id: 10,
+    src: "/images/zam9.jpeg",
+    alt: 'Precious Memories',
+    caption: 'Precious Memories 🌸',
+  },
+  {
+    id: 11,
+    src: "/images/zam10.jpeg",
+    alt: 'Always Smiling',
+    caption: 'Always Smiling 😊',
+  },
 ];
 
 export default function MemoryGallery() {
@@ -86,7 +104,7 @@ export default function MemoryGallery() {
           </h2>
           <div className="section-divider mb-8" />
           <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Every picture tells a story of love, laughter, and the beautiful journey we've shared. 
+            Every picture tells a story of love, laughter, and the beautiful journey we&apos;ve shared. 
             These are the snapshots of our favorite chapters.
           </p>
         </motion.div>

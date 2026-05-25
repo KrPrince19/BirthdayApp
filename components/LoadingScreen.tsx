@@ -5,21 +5,19 @@ import { useEffect, useState } from 'react';
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [count, setCount] = useState(3);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(() => setLoading(false), 600);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 40);
-    return () => clearInterval(timer);
-  }, []);
+    if (count > -1) {
+      // 1000ms for countdown (3,2,1) and 1200ms for "Let's Go!"
+      const timer = setTimeout(() => setCount(count - 1), count === 0 ? 1200 : 1000);
+      return () => clearTimeout(timer);
+    } else {
+      // Show "Happy Birthday ZamZam!" for 2 seconds before closing loading screen
+      const timer = setTimeout(() => setLoading(false), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [count]);
 
   return (
     <AnimatePresence>
@@ -30,46 +28,45 @@ export default function LoadingScreen() {
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
         >
-          {/* Animated cake emoji */}
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, -5, 5, 0],
-            }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="text-7xl"
-          >
-            🎂
-          </motion.div>
-
-          {/* Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-center"
-          >
-            <p className="shimmer-text text-3xl font-bold font-display mb-2">
-              Preparing Your Surprise...
-            </p>
-            <p className="text-purple-300 text-sm tracking-widest uppercase">
-              Loading magic ✨
-            </p>
-          </motion.div>
-
-          {/* Progress bar */}
-          <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden">
+          <AnimatePresence mode="wait">
             <motion.div
-              className="h-full rounded-full"
-              style={{
-                background: 'linear-gradient(90deg, #bf00ff, #ff2d78, #ffcc00)',
-                width: `${progress}%`,
-              }}
-              transition={{ duration: 0.1 }}
-            />
-          </div>
+              key={count}
+              initial={{ scale: 0.5, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 1.5, opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className={`font-display font-black text-transparent bg-clip-text bg-gradient-to-br from-[#ff2d78] via-[#bf00ff] to-[#ffcc00] drop-shadow-[0_0_20px_rgba(191,0,255,0.5)] text-center px-4 ${
+                count > 0
+                  ? 'text-9xl md:text-[12rem]'
+                  : count === 0
+                  ? 'text-7xl md:text-8xl'
+                  : 'text-5xl md:text-7xl'
+              }`}
+            >
+              {count > 0 ? (
+                count
+              ) : count === 0 ? (
+                "Let's Go! 🚀"
+              ) : (
+                <>
+                  Happy Birthday<br />ZamZam! 🎉
+                </>
+              )}
+            </motion.div>
+          </AnimatePresence>
 
-          <p className="text-white/40 text-sm">{progress}%</p>
+          <AnimatePresence>
+            {count > 0 && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-purple-300 text-lg md:text-xl tracking-widest uppercase font-semibold mt-4 absolute bottom-[30%]"
+              >
+                Get Ready...
+              </motion.p>
+            )}
+          </AnimatePresence>
 
           {/* Floating sparkles */}
           {[...Array(6)].map((_, i) => (
@@ -81,8 +78,8 @@ export default function LoadingScreen() {
                 top: `${20 + (i % 3) * 25}%`,
               }}
               animate={{
-                y: [-10, 10, -10],
-                opacity: [0.5, 1, 0.5],
+                y: [-20, 20, -20],
+                opacity: [0.3, 1, 0.3],
                 rotate: [0, 180, 360],
               }}
               transition={{

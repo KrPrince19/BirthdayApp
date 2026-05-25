@@ -152,40 +152,74 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Deep space gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#050510] via-[#0d0020] to-[#10000a]" />
+      {/* Animated Deep space gradient background */}
+      <motion.div 
+        className="absolute inset-0"
+        animate={{
+          background: [
+            "linear-gradient(45deg, #2D0A31, #1A0B2E, #11051F)",
+            "linear-gradient(45deg, #1A0B2E, #11051F, #3b0c36)",
+            "linear-gradient(45deg, #11051F, #3b0c36, #2D0A31)",
+            "linear-gradient(45deg, #2D0A31, #1A0B2E, #11051F)",
+          ]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      />
 
-      {/* Radial glow orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute w-[600px] h-[600px] rounded-full opacity-20"
-          style={{
-            background: 'radial-gradient(circle, #bf00ff 0%, transparent 70%)',
-            top: '10%',
-            left: '20%',
-            filter: 'blur(60px)',
+      {/* Floating Animated Mesh Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none filter blur-[80px] md:blur-[120px] opacity-70">
+        <motion.div
+          className="absolute w-[40vw] h-[40vw] min-w-[400px] min-h-[400px] bg-purple-600/50 rounded-full mix-blend-screen"
+          animate={{
+            x: [0, 100, -50, 0],
+            y: [0, -100, 50, 0],
+            scale: [1, 1.2, 0.8, 1]
           }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          style={{ top: '-10%', left: '-10%' }}
         />
-        <div
-          className="absolute w-[500px] h-[500px] rounded-full opacity-15"
-          style={{
-            background: 'radial-gradient(circle, #ff2d78 0%, transparent 70%)',
-            bottom: '10%',
-            right: '20%',
-            filter: 'blur(80px)',
+        
+        <motion.div
+          className="absolute w-[50vw] h-[50vw] min-w-[500px] min-h-[500px] bg-pink-600/40 rounded-full mix-blend-screen"
+          animate={{
+            x: [0, -150, 100, 0],
+            y: [0, 100, -100, 0],
+            scale: [1, 0.8, 1.3, 1]
           }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          style={{ top: '20%', right: '-20%' }}
         />
-        <div
-          className="absolute w-[400px] h-[400px] rounded-full opacity-10"
-          style={{
-            background: 'radial-gradient(circle, #ffcc00 0%, transparent 70%)',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            filter: 'blur(100px)',
+        
+        <motion.div
+          className="absolute w-[45vw] h-[45vw] min-w-[450px] min-h-[450px] bg-yellow-500/30 rounded-full mix-blend-screen"
+          animate={{
+            x: [0, 100, -150, 0],
+            y: [0, -50, 150, 0],
+            scale: [1, 1.3, 0.9, 1]
           }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          style={{ bottom: '-10%', left: '10%' }}
+        />
+        
+        <motion.div
+          className="absolute w-[35vw] h-[35vw] min-w-[350px] min-h-[350px] bg-fuchsia-600/50 rounded-full mix-blend-screen"
+          animate={{
+            x: [0, -100, 50, 0],
+            y: [0, -150, 100, 0],
+            scale: [1, 1.1, 0.9, 1]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          style={{ bottom: '10%', right: '20%' }}
         />
       </div>
+
+      {/* Glassmorphism Noise Overlay for premium texture */}
+      <div 
+        className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      />
 
       {/* Stars */}
       <div className="absolute inset-0 pointer-events-none">
@@ -243,10 +277,10 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          "Pray that your future shines bright like the moon,<br />
+          &quot;Pray that your future shines bright like the moon,<br />
           May your heart lift with joy like a soaring balloon.<br />
-          May your life play a success story's beautiful tune,<br />
-          For the world grew more lovely when you came in June." 🌙
+          May your life play a success story&apos;s beautiful tune,<br />
+          For the world grew more lovely when you came in June.&quot; 🌙
         </motion.p>
 
         {/* CTA Buttons */}
@@ -303,7 +337,7 @@ export default function HeroSection() {
 
         {/* Audio element */}
         <audio ref={audioRef} loop>
-          <source src="/music/birthday.mp3" type="audio/mpeg" />
+          <source src="/music/zam.mpeg" type="audio/mpeg" />
         </audio>
       </div>
 

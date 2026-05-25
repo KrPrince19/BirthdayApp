@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #050510;
+  --color-bg: #1A0B2E;
   --color-surface: rgba(255,255,255,0.04);
   --color-border: rgba(255,255,255,0.08);
   --color-purple: #bf00ff;
