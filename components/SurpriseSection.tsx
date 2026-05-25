@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function Heart({ style }: { style: React.CSSProperties }) {
   return (
@@ -69,17 +69,28 @@ Wishing you the very best,
 Your Biggest Fan 🎉`;
 
 export default function SurpriseSection() {
-  const [opened, setOpened] = useState(false);
+  const [cut, setCut] = useState(false);
+  const [cutting, setCutting] = useState(false);
   const [showFireworks, setShowFireworks] = useState(false);
   const [hearts, setHearts] = useState<{ id: number; x: number }[]>([]);
-  const [shaking, setShaking] = useState(false);
 
-  const handleOpen = () => {
-    if (opened) return;
-    setShaking(true);
+  const handleCut = () => {
+    if (cut || cutting) return;
+    setCutting(true);
+    
+    // Play music from the music folder using the global audio element if available, or create a new one
+    const audioEl = document.querySelector('audio');
+    if (audioEl) {
+      audioEl.play().catch(() => {});
+    } else {
+      const audio = new Audio('/music/zam.mpeg');
+      audio.loop = true;
+      audio.play().catch(() => {});
+    }
+
     setTimeout(() => {
-      setShaking(false);
-      setOpened(true);
+      setCutting(false);
+      setCut(true);
       setShowFireworks(true);
 
       // Spawn hearts
@@ -91,7 +102,7 @@ export default function SurpriseSection() {
 
       setTimeout(() => setShowFireworks(false), 2000);
       setTimeout(() => setHearts([]), 3000);
-    }, 600);
+    }, 1000); // 1s cutting animation
   };
 
   return (
@@ -115,17 +126,17 @@ export default function SurpriseSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="section-tag">🎁 Surprise</div>
+          <div className="section-tag">🎂 Birthday Cake</div>
           <h2 className="text-4xl md:text-6xl font-black font-display gradient-text mb-4">
-            Your Special Gift
+            Time to Celebrate!
           </h2>
           <div className="section-divider" />
           <p className="mt-6 text-white/50 text-lg">
-            Click the gift box to reveal your surprise! 🎀
+            Make a wish and cut the cake! ✨
           </p>
         </motion.div>
 
-        {/* Gift Box */}
+        {/* Cake Area */}
         <div className="relative flex justify-center mb-12">
           {/* Fireworks */}
           <AnimatePresence>
@@ -158,40 +169,50 @@ export default function SurpriseSection() {
             />
           ))}
 
-          {/* Gift Box */}
+          {/* Cake Button */}
           <motion.button
-            onClick={handleOpen}
+            onClick={handleCut}
             className="relative cursor-pointer select-none"
-            animate={shaking ? { rotate: [-5, 5, -5, 5, 0] } : {}}
-            transition={{ duration: 0.5 }}
-            whileHover={!opened ? { scale: 1.05 } : {}}
-            whileTap={!opened ? { scale: 0.95 } : {}}
+            whileHover={!cut && !cutting ? { scale: 1.05 } : {}}
+            whileTap={!cut && !cutting ? { scale: 0.95 } : {}}
           >
             <motion.div
-              className="text-8xl md:text-[160px] filter drop-shadow-lg"
+              className="text-8xl md:text-[160px] filter drop-shadow-lg relative"
               animate={
-                !opened
-                  ? {
-                      y: [0, -12, 0],
-                    }
-                  : { scale: [1, 1.3, 1], rotate: [0, -10, 10, 0] }
+                !cut && !cutting
+                  ? { y: [0, -12, 0] }
+                  : cut
+                  ? { scale: [1, 1.2, 1], rotate: [0, -5, 5, 0] }
+                  : {}
               }
               transition={
-                !opened
+                !cut && !cutting
                   ? { repeat: Infinity, duration: 2, ease: 'easeInOut' }
                   : { duration: 0.6 }
               }
             >
-              {opened ? '🎁' : '📦'}
+              {cut ? '🍰' : '🎂'}
+
+              {/* Knife Animation during cutting */}
+              {cutting && (
+                <motion.div 
+                  className="absolute top-[-20%] right-[-20%] text-6xl md:text-8xl z-50 pointer-events-none drop-shadow-2xl"
+                  initial={{ x: 50, y: -50, rotate: 45 }}
+                  animate={{ x: -100, y: 100, rotate: -20 }}
+                  transition={{ duration: 1, ease: 'easeInOut' }}
+                >
+                  🔪
+                </motion.div>
+              )}
             </motion.div>
 
-            {!opened && (
+            {!cut && !cutting && (
               <motion.div
-                className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium whitespace-nowrap"
+                className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium whitespace-nowrap"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ repeat: Infinity, duration: 2 }}
               >
-                ✨ Click to open ✨
+                ✨ Click to cut the cake ✨
               </motion.div>
             )}
           </motion.button>
@@ -199,12 +220,12 @@ export default function SurpriseSection() {
 
         {/* Revealed Message */}
         <AnimatePresence>
-          {opened && (
+          {cut && (
             <motion.div
               initial={{ opacity: 0, y: 60, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, type: 'spring', damping: 15 }}
-              className="glass neon-border-pink rounded-3xl p-6 md:p-12 text-left relative overflow-hidden"
+              className="glass neon-border-pink rounded-3xl p-6 md:p-12 text-left relative overflow-hidden mt-8"
             >
               {/* Sparkle corner */}
               <div className="absolute top-4 right-4 text-2xl animate-spin-slow">✨</div>

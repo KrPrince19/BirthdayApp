@@ -290,9 +290,16 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
         >
-          <a href="#surprise" className="btn-primary text-lg px-8 py-4">
-            <span>🎁 Open Your Surprise</span>
-          </a>
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              if (!isPlaying) toggleMusic();
+              document.getElementById('surprise')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="btn-primary text-lg px-8 py-4"
+          >
+            <span>🎂 Cut the Cake</span>
+          </button>
           <a
             href="#gallery"
             className="flex items-center gap-2 px-8 py-4 glass rounded-full text-white/80 font-semibold border border-white/10 hover:border-purple-500/50 transition-all hover:bg-white/5"
