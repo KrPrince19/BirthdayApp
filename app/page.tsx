@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import CursorGlow from '@/components/CursorGlow';
 import Navbar from '@/components/Navbar';
@@ -10,8 +11,15 @@ import Timeline from '@/components/Timeline';
 import SurpriseSection from '@/components/SurpriseSection';
 import BirthdayWishes from '@/components/BirthdayWishes';
 import Footer from '@/components/Footer';
+import MessageGate from '@/components/MessageGate';
 
 export default function Home() {
+  const [hasReadMessage, setHasReadMessage] = useState(false);
+
+  if (!hasReadMessage) {
+    return <MessageGate onComplete={() => setHasReadMessage(true)} />;
+  }
+
   return (
     <>
       {/* Loading screen */}
