@@ -54,7 +54,7 @@ const timelineEvents = [
     year: 'Today',
     title: 'Your Day Has Come 🎂',
     description:
-      "Today we celebrate YOU — the incredible person you've become and the amazing journey that still lies ahead!",
+      "Today is all about celebrating your special day and wishing you happiness, success, and a wonderful year ahead! 🎉",
     icon: '🎉',
     color: '#ff2d78',
   },

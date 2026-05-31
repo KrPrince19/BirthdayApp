@@ -42,7 +42,7 @@ const photos = [
     alt: 'Laughter and Joy',
     caption: 'Laughter and Joy 🎊',
   },
-  
+
   {
     id: 8,
     src: "/images/zm8.jpeg",
@@ -104,8 +104,7 @@ export default function MemoryGallery() {
           </h2>
           <div className="section-divider mb-8" />
           <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Every picture tells a story of love, laughter, and the beautiful journey we&apos;ve shared. 
-            These are the snapshots of our favorite chapters.
+            Every picture tells a story. These are a few beautiful moments captured in time.
           </p>
         </motion.div>
 
@@ -118,7 +117,7 @@ export default function MemoryGallery() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
+              transition={{
                 delay: i * 0.1,
                 duration: 0.8,
                 ease: [0.22, 1, 0.36, 1]
@@ -126,10 +125,10 @@ export default function MemoryGallery() {
             >
               {/* Floating Decoration Container */}
               <motion.div
-                animate={{ 
+                animate={{
                   y: [0, -10, 0],
                 }}
-                transition={{ 
+                transition={{
                   duration: 4 + Math.random() * 2,
                   repeat: Infinity,
                   ease: "easeInOut",
@@ -164,9 +163,9 @@ export default function MemoryGallery() {
 
                     {/* Hover Glow */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 flex items-center justify-center">
-                       <div className="w-12 h-12 rounded-full glass flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500">
-                          <FiZoomIn size={24} />
-                       </div>
+                      <div className="w-12 h-12 rounded-full glass flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-500">
+                        <FiZoomIn size={24} />
+                      </div>
                     </div>
                   </div>
 
@@ -201,7 +200,7 @@ export default function MemoryGallery() {
             exit={{ opacity: 0 }}
           >
             {/* Ultra Blur Backdrop */}
-            <motion.div 
+            <motion.div
               className="absolute inset-0 bg-black/95 backdrop-blur-3xl"
               onClick={() => setSelected(null)}
             />
@@ -236,14 +235,14 @@ export default function MemoryGallery() {
                     quality={100}
                   />
                 </div>
-                
+
                 {/* Gradient Overlay for Text Visibility */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-20" />
-                
+
                 {/* Caption Bar */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 flex flex-col md:flex-row md:items-end justify-between gap-4 z-30">
                   <div className="max-w-full overflow-hidden">
-                    <motion.p 
+                    <motion.p
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
@@ -251,7 +250,7 @@ export default function MemoryGallery() {
                     >
                       {selected.caption}
                     </motion.p>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}

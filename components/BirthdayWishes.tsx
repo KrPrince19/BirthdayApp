@@ -13,33 +13,9 @@ const BIRTHDAY_WISHES = [
   },
   {
     id: 2,
-    text: "Wishing you a day that is as special in every way as you are. May all your birthday wishes and dreams come true, and may you feel how truly celebrated you are. 🎉",
-    emoji: '💖',
-    author: 'From the Stars',
-  },
-  {
-    id: 3,
-    text: "On your birthday, I wish you the greatest adventure, the most beautiful sunsets, the warmest hugs, and a life filled with endless possibilities. 🚀",
-    emoji: '🚀',
-    author: 'From Your Dreams',
-  },
-  {
-    id: 4,
-    text: "Today marks another year of your radiant existence on this planet. You light up every room you walk into, and the world is genuinely a better place with you in it. 🌸",
-    emoji: '🌸',
-    author: 'From the Heart',
-  },
-  {
-    id: 5,
-    text: "Happy birthday to someone who deserves all the happiness, joy, and magic that life has to offer. May this year be your most extraordinary chapter yet! ✨",
+    text: "Happy Birthday! 🎉\n\nWishing you a wonderful day filled with happiness, good health, and lots of memorable moments. May this year bring you success, new opportunities, and everything you are working towards.\n\nYou are a kind and hardworking person, and I hope life rewards you with many reasons to smile. May your birthday be filled with laughter, positivity, and the company of people who care about you.\n\nEnjoy your special day, make great memories, and may the year ahead be full of happiness and good fortune. 🎂✨",
     emoji: '✨',
-    author: 'From the Cosmos',
-  },
-  {
-    id: 6,
-    text: "Like a rare gem, you are precious, unique, and irreplaceable. On this special day, may you be showered with all the blessings and good fortune you so richly deserve. 💎",
-    emoji: '💎',
-    author: 'From the Soul',
+    author: 'From the Heart',
   },
 ];
 
@@ -116,7 +92,7 @@ export default function BirthdayWishes() {
             {wish.emoji}
           </motion.div>
 
-          <blockquote className="text-xl md:text-2xl font-light text-white/90 leading-relaxed mb-8 font-display italic">
+          <blockquote className="text-xl md:text-2xl font-light text-white/90 leading-relaxed mb-8 font-display italic whitespace-pre-wrap">
             &ldquo;{wish.text}&rdquo;
           </blockquote>
 
@@ -128,11 +104,10 @@ export default function BirthdayWishes() {
           <div className="mt-8 flex justify-center gap-4">
             <motion.button
               onClick={() => toggleLike(wish.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all ${
-                liked.has(wish.id)
+              className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all ${liked.has(wish.id)
                   ? 'bg-pink-500/30 border border-pink-400/50 text-pink-300'
                   : 'glass border border-white/10 text-white/60 hover:border-pink-500/40 hover:text-white'
-              }`}
+                }`}
               whileTap={{ scale: 0.95 }}
             >
               <FiHeart className={liked.has(wish.id) ? 'fill-pink-400 text-pink-400' : ''} />
@@ -157,11 +132,10 @@ export default function BirthdayWishes() {
             <button
               key={i}
               onClick={() => setCurrentWish(i)}
-              className={`rounded-full transition-all duration-300 ${
-                i === currentWish
+              className={`rounded-full transition-all duration-300 ${i === currentWish
                   ? 'w-8 h-2 bg-gradient-to-r from-purple-500 to-pink-500'
                   : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-              }`}
+                }`}
             />
           ))}
         </div>
