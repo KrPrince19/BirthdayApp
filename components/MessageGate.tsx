@@ -37,7 +37,7 @@ export default function MessageGate({ onComplete }: MessageGateProps) {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="space-y-1.5 sm:space-y-4 md:space-y-5 text-gray-200 font-light leading-snug sm:leading-relaxed text-[11px] xs:text-xs sm:text-base md:text-lg overflow-y-auto shrink pb-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pr-1">
+              <div className="space-y-1.5 sm:space-y-4 md:space-y-5 text-gray-200 font-light leading-snug sm:leading-relaxed text-[11px] xs:text-xs sm:text-base md:text-lg overflow-y-auto overflow-x-hidden shrink pb-2 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 <p className="px-2 py-1.5 sm:px-4 sm:py-3 -mx-2 sm:-mx-4 rounded-xl sm:rounded-2xl hover:bg-white/5 hover:text-white transition-all duration-300 cursor-default">
                   I&apos;m sorry if this bothers you 😔, and please forgive me if it seems strange 🙏.
                 </p>
