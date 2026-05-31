@@ -39,15 +39,15 @@ export default function MessageGate({ onComplete }: MessageGateProps) {
             >
               <div className="space-y-1.5 sm:space-y-4 md:space-y-5 text-gray-200 font-light leading-snug sm:leading-relaxed text-[11px] xs:text-xs sm:text-base md:text-lg overflow-y-auto shrink pb-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pr-1">
                 <p className="px-2 py-1.5 sm:px-4 sm:py-3 -mx-2 sm:-mx-4 rounded-xl sm:rounded-2xl hover:bg-white/5 hover:text-white transition-all duration-300 cursor-default">
-                  I'm sorry if this bothers you 😔, and please forgive me if it seems strange 🙏.
+                  I&apos;m sorry if this bothers you 😔, and please forgive me if it seems strange 🙏.
                 </p>
                 
                 <p className="px-2 py-1.5 sm:px-4 sm:py-3 -mx-2 sm:-mx-4 rounded-xl sm:rounded-2xl hover:bg-white/5 hover:text-white transition-all duration-300 cursor-default">
-                  Many people are practical and don't take things this seriously. Maybe I'm different—that's just the way God made me ✨. I still have the pen 🖊️ you gave me, I remember the sketch 🎨 I made for you, and I never removed your signature ✍️ from my T-shirt 👕. To others, these may be small things, but I kept them as memories of someone whose friendship I always hoped for 🤝.
+                  Many people are practical and don&apos;t take things this seriously. Maybe I&apos;m different—that&apos;s just the way God made me ✨. I still have the pen 🖊️ you gave me, I remember the sketch 🎨 I made for you, and I never removed your signature ✍️ from my T-shirt 👕. To others, these may be small things, but I kept them as memories of someone whose friendship I always hoped for 🤝.
                 </p>
 
                 <p className="px-2 py-1.5 sm:px-4 sm:py-3 -mx-2 sm:-mx-4 rounded-xl sm:rounded-2xl hover:bg-white/5 hover:text-white transition-all duration-300 cursor-default">
-                  I could have kept all of this to myself, but I wanted to be honest 🗣️. I don't know what the result will be, but I'd rather tell the truth 🤍.
+                  I could have kept all of this to myself, but I wanted to be honest 🗣️. I don&apos;t know what the result will be, but I&apos;d rather tell the truth 🤍.
                 </p>
 
                 <p className="px-2 py-1.5 sm:px-4 sm:py-3 -mx-2 sm:-mx-4 rounded-xl sm:rounded-2xl hover:bg-white/5 hover:text-white transition-all duration-300 cursor-default">
@@ -55,7 +55,7 @@ export default function MessageGate({ onComplete }: MessageGateProps) {
                 </p>
 
                 <p className="px-2 py-1.5 sm:px-4 sm:py-3 -mx-2 sm:-mx-4 rounded-xl sm:rounded-2xl hover:bg-white/5 hover:text-white transition-all duration-300 cursor-default">
-                  And once again, I'm sorry if I've ever bothered you 😔🙏.
+                  And once again, I&apos;m sorry if I&apos;ve ever bothered you 😔🙏.
                 </p>
               </div>
 
