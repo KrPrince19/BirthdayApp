@@ -12,6 +12,7 @@ import SurpriseSection from '@/components/SurpriseSection';
 import BirthdayWishes from '@/components/BirthdayWishes';
 import Footer from '@/components/Footer';
 import MessageGate from '@/components/MessageGate';
+import FriendRequest from '@/components/FriendRequest';
 
 export default function Home() {
   const [hasReadMessage, setHasReadMessage] = useState(false);
@@ -49,6 +50,10 @@ export default function Home() {
         <Timeline />
 
         <div className="h-px bg-gradient-to-r from-transparent via-pink-500/30 to-transparent" />
+
+        <FriendRequest />
+
+        <div className="h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
 
         <SurpriseSection />
 
