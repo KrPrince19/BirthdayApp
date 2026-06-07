@@ -29,10 +29,10 @@ export default function FriendRequest() {
         >
           <div className="text-4xl mb-4">✨</div>
           <h3 className="text-2xl md:text-3xl font-bold font-display gradient-text mb-6">
-            Give Where It's Truly Needed
+            Give Where It&apos;s Truly Needed
           </h3>
           <p className="text-white/80 leading-relaxed text-sm md:text-base font-medium italic text-left">
-            "Jaise mandir aur mahjid me log paisa, prasad aur daan karte hain. Wahan koi maang nahi raha hota, phir bhi log dete hain. Lekin bahar koi zaruratmand haath phaila kar help maang raha hota hai, use aksar log nazarandaaz kar dete hain. Haqeeqat ye hai ki us daan ki keemat mandir ya mahjid se zyada us insaan ke liye hoti hai jise uski sach me zarurat hai. Isi tarah apni friendship bhi usi insaan ko do jo sach me tumhari friendship maang raha ho, jo tumhare friendship ki respect karta ho aur jise waqai tumhari friendship ki zarurat ho."
+            &quot;Jaise mandir aur mahjid me log paisa, prasad aur daan karte hain. Wahan koi maang nahi raha hota, phir bhi log dete hain. Lekin bahar koi zaruratmand haath phaila kar help maang raha hota hai, use aksar log nazarandaaz kar dete hain. Haqeeqat ye hai ki us daan ki keemat mandir ya mahjid se zyada us insaan ke liye hoti hai jise uski sach me zarurat hai. Isi tarah apni friendship bhi usi insaan ko do jo sach me tumhari friendship maang raha ho, jo tumhare friendship ki respect karta ho aur jise waqai tumhari friendship ki zarurat ho.&quot;
           </p>
         </motion.div>
 
