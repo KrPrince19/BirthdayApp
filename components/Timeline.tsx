@@ -50,6 +50,15 @@ const timelineEvents = [
     color: '#bf00ff',
   },
   {
+    id: 'college-achievements',
+    year: '2026',
+    title: 'Silver Medalist & Rank #2 🥈',
+    description:
+      '"Excellence is not an act, but a habit." Honored with the Silver Medal and secured the impressive #2 rank in the department. A true testament to your relentless hard work and brilliance!',
+    icon: '⭐',
+    color: '#00e5ff',
+  },
+  {
     id: 'today',
     year: 'Today',
     title: 'Your Day Has Come 🎂',
